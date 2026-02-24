@@ -12,7 +12,7 @@ This branch introduces a complete streaming data pipeline with three components:
 
 ### Hopsworks Ingestion
 
-The pipeline writes to Hopsworks using the [HSFS Flink client](https://docs.hopsworks.ai/). The ingestion flow works as follows:
+The pipeline writes to Hopsworks using the [Hopsworks Flink client](https://docs.hopsworks.ai/latest/javadoc/). The ingestion flow works as follows:
 
 1. **Setup** (`setup/create_feature_group.py`) — Creates a `StreamFeatureGroup` in Hopsworks with `stream=True` and `online_enabled=True`. This configures a Hopsworks-managed Kafka topic behind the feature group that accepts streaming inserts.
 2. **Connection** (`HopsworksSinkBuilder.java`) — At job startup, the Flink job connects to Hopsworks using the API key, retrieves the project's Feature Store, and looks up the `StreamFeatureGroup` by name and version.
